@@ -1,0 +1,13 @@
+[user]
+	email = git@nekusoul.de
+	name = NekuSoul
+	signingKey = 46AEEAB4F23A28B0D31781019A314440935C4F6F
+[commit]
+	gpgSign = true
+[tag]
+	forceSignAnnotated = true
+	gpgSign = true
+[credential]
+	helper = store
+[core]
+	editor = code

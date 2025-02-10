@@ -12,4 +12,5 @@ This repository contains a bunch of my dotfiles, managed by `chezmoi`.
 * **lf**: terminal file manager
 * **mpv**: media player
 * **tide**: fish prompt
+* **vscode**: code editor
 * **zellij**: terminal multiplexer

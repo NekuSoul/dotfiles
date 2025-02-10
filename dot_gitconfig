@@ -10,4 +10,5 @@
 [credential]
 	helper = store
 [core]
+	autocrlf = input
 	editor = code

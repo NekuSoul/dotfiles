@@ -7,7 +7,7 @@ This repository contains a bunch of my dotfiles, managed by `chezmoi`.
 * **chezmoi**: dotfile manager
 * **fish**: commandline shell
 * **git**: version control
-* **keepass**: password manager
+* **keepassxc**: password manager
 * **kitty**: terminal emulator
 * **lf**: terminal file manager
 * **mpv**: media player

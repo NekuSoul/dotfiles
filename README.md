@@ -4,6 +4,7 @@ This repository contains a bunch of my dotfiles, managed by `chezmoi`.
 
 ## Included configurations
 
+* **chezmoi**: dotfile manager
 * **fish**: commandline shell
 * **git**: version control
 * **keepass**: password manager

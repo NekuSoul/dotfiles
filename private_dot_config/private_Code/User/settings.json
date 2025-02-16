@@ -43,6 +43,7 @@
   "git.openRepositoryInParentFolders": "never",
   "window.menuBarVisibility": "toggle",
   "window.autoDetectHighContrast": false,
+  "workbench.panel.showLabels": false,
   "workbench.colorTheme": "Catppuccin Frappé",
-  "workbench.panel.showLabels": false
+  "workbench.iconTheme": "catppuccin-frappe"
 }

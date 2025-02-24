@@ -11,6 +11,7 @@ This repository contains a bunch of my dotfiles, managed by `chezmoi`.
 * **keepassxc**: password manager
 * **kitty**: terminal emulator
 * **lf**: terminal file manager
+* **mangohud**: fps monitor and limiter
 * **mpv**: media player
 * **tide**: fish prompt
 * **vscode**: code editor

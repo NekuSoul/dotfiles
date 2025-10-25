@@ -13,6 +13,7 @@ This repository contains a bunch of my dotfiles, managed by `chezmoi`.
 * **lf**: terminal file manager
 * **mangohud**: fps monitor and limiter
 * **mpv**: media player
+* **rmpc**: tui mpd client
 * **tide**: fish prompt
 * **vscode**: code editor
 * **zellij**: terminal multiplexer

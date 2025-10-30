@@ -1,0 +1,24 @@
+directory: /mnt/media/Music
+library: ~/.config/beets/musiclibrary.db
+
+plugins: bpd chroma convert embedart fetchart fish fromfilename info lyrics musicbrainz play the
+
+convert:
+  auto: yes
+  embed: yes
+  format: flac
+  quiet: yes
+
+embedart:
+  remove_art_file: yes
+
+import:
+  languages: en jp
+  move: yes
+
+lyrics:
+  auto: no
+  sources: [lrclib]
+
+musicbrainz:
+  genres: yes

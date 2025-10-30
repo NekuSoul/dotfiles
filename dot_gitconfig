@@ -12,3 +12,5 @@
 [core]
 	autocrlf = input
 	editor = code
+[fetch]
+	prune = true

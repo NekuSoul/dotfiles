@@ -12,6 +12,7 @@ This repository contains a bunch of my dotfiles, managed by `chezmoi`.
 * **kitty**: terminal emulator
 * **lf**: terminal file manager
 * **mangohud**: fps monitor and limiter
+* **mpv**: music player demon
 * **mpv**: media player
 * **rmpc**: tui mpd client
 * **tide**: fish prompt

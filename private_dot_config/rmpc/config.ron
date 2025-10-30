@@ -4,7 +4,7 @@
 (
     address: "127.0.0.1:6600",
     password: None,
-    theme: None,
+    theme: Some("nekusoul"),
     cache_dir: None,
     on_song_change: None,
     volume_step: 5,
@@ -20,7 +20,7 @@
     browser_song_sort: [Disc, Track, Artist, Title],
     directories_sort: SortFormat(group_by_type: true, reverse: false),
     album_art: (
-        method: None,
+        method: Auto,
         max_size_px: (width: 1200, height: 1200),
         disabled_protocols: ["http://", "https://"],
         vertical_align: Center,
@@ -28,67 +28,51 @@
     ),
     keybinds: (
         global: {
-            ":":       CommandMode,
-            ",":       VolumeDown,
-            "s":       Stop,
-            ".":       VolumeUp,
-            "<Tab>":   NextTab,
-            "<S-Tab>": PreviousTab,
-            "1":       SwitchToTab("Queue"),
-            "2":       SwitchToTab("Artists"),
-            "3":       SwitchToTab("Albums"),
-            "4":       SwitchToTab("Playlists"),
-            "5":       SwitchToTab("Search"),
-            "q":       Quit,
-            ">":       NextTrack,
-            "p":       TogglePause,
-            "<":       PreviousTrack,
-            "f":       SeekForward,
-            "z":       ToggleRepeat,
-            "x":       ToggleRandom,
-            "c":       ToggleConsume,
-            "v":       ToggleSingle,
-            "b":       SeekBack,
-            "~":       ShowHelp,
-            "u":       Update,
-            "U":       Rescan,
-            "I":       ShowCurrentSongInfo,
-            "O":       ShowOutputs,
-            "P":       ShowDecoders,
-            "R":       AddRandom,
+            ":":        CommandMode,
+            "C-<Down>": VolumeDown,
+            "s":        Stop,
+            "C-<Up>":   VolumeUp,
+            "<Tab>":    NextTab,
+            "<S-Tab>":  PreviousTab,
+            "1":        SwitchToTab("Queue"),
+            "2":        SwitchToTab("Artists"),
+            "3":        SwitchToTab("Albums"),
+            "4":        SwitchToTab("Playlists"),
+            "5":        SwitchToTab("Search"),
+            "q":        Quit,
+            "C-Right>":NextTrack,
+            "p":        TogglePause,
+            "C-Left>": PreviousTrack,
+            "f":        SeekForward,
+            "z":        ToggleRepeat,
+            "x":        ToggleRandom,
+            "c":        ToggleConsume,
+            "v":        ToggleSingle,
+            "b":        SeekBack,
+            "?":        ShowHelp,
+            "I":        ShowCurrentSongInfo,
         },
         navigation: {
-            "k":         Up,
-            "j":         Down,
-            "h":         Left,
-            "l":         Right,
             "<Up>":      Up,
             "<Down>":    Down,
             "<Left>":    Left,
             "<Right>":   Right,
-            "<C-k>":     PaneUp,
-            "<C-j>":     PaneDown,
-            "<C-h>":     PaneLeft,
-            "<C-l>":     PaneRight,
-            "<C-u>":     UpHalf,
+            "u":         UpHalf,
+            "d":         DownHalf,
             "N":         PreviousResult,
             "a":         Add,
             "A":         AddAll,
             "r":         Rename,
             "n":         NextResult,
-            "g":         Top,
+            "U":         Top,
             "<Space>":   Select,
             "<C-Space>": InvertSelection,
-            "G":         Bottom,
+            "D":         Bottom,
             "<CR>":      Confirm,
-            "i":         FocusInput,
-            "J":         MoveDown,
-            "<C-d>":     DownHalf,
             "/":         EnterSearch,
             "<C-c>":     Close,
             "<Esc>":     Close,
-            "K":         MoveUp,
-            "D":         Delete,
+            "<Del>":     Delete,
             "B":         ShowInfo,
         },
         queue: {
@@ -96,7 +80,7 @@
             "<CR>":    Play,
             "<C-s>":   Save,
             "a":       AddToPlaylist,
-            "d":       Delete,
+            "<Del>":   Delete,
             "C":       JumpToCurrent,
             "X":       Shuffle,
         },
@@ -105,26 +89,20 @@
         case_sensitive: false,
         mode: Contains,
         tags: [
-            (value: "any",         label: "Any Tag"),
             (value: "artist",      label: "Artist"),
             (value: "album",       label: "Album"),
-            (value: "albumartist", label: "Album Artist"),
             (value: "title",       label: "Title"),
-            (value: "filename",    label: "Filename"),
             (value: "genre",       label: "Genre"),
         ],
     ),
     artists: (
-        album_display_mode: SplitByDate,
+        album_display_mode: NameOnly,
         album_sort_by: Date,
     ),
     tabs: [
         (
             name: "Queue",
-            pane: Split(
-                direction: Horizontal,
-                panes: [(size: "40%", pane: Pane(AlbumArt)), (size: "60%", pane: Pane(Queue))],
-            ),
+            pane:  Pane(Queue),
         ),
         (
             name: "Artists",
@@ -144,25 +122,25 @@
         ),
     ],
     cava: (
-    framerate: 60, // default 60
-    autosens: true, // default true
-    sensitivity: 100, // default 100
-    lower_cutoff_freq: 50, // not passed to cava if not provided
-    higher_cutoff_freq: 10000, // not passed to cava if not provided
-    input: (
-        method: Fifo,
-        source: "/tmp/mpd.fifo",
-        sample_rate: 44100,
-        channels: 2,
-        sample_bits: 16,
+        framerate: 60, // default 60
+        autosens: true, // default true
+        sensitivity: 100, // default 100
+        lower_cutoff_freq: 50, // not passed to cava if not provided
+        higher_cutoff_freq: 10000, // not passed to cava if not provided
+        input: (
+            method: Fifo,
+            source: "/tmp/mpd.fifo",
+            sample_rate: 44100,
+            channels: 2,
+            sample_bits: 16,
+        ),
+        smoothing: (
+            noise_reduction: 77, // default 77
+            monstercat: false, // default false
+            waves: false, // default false
+        ),
+        // this is a list of floating point numbers thats directly passed to cava
+        // they are passed in order that they are defined
+        eq: []
     ),
-    smoothing: (
-        noise_reduction: 77, // default 77
-        monstercat: false, // default false
-        waves: false, // default false
-    ),
-    // this is a list of floating point numbers thats directly passed to cava
-    // they are passed in order that they are defined
-    eq: []
-),
 )

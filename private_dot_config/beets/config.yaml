@@ -1,7 +1,7 @@
 directory: /mnt/media/Music
 library: ~/.config/beets/musiclibrary.db
 
-plugins: bpd chroma convert embedart fetchart fish fromfilename info lyrics musicbrainz play the
+plugins: bpd chroma convert embedart fetchart fish fromfilename info musicbrainz play replaygain the
 
 convert:
   auto: yes
@@ -15,6 +15,9 @@ embedart:
 import:
   languages: en jp
   move: yes
+
+replaygain:
+  backend: ffmpeg
 
 lyrics:
   auto: no

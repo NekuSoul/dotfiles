@@ -1,6 +1,5 @@
 {
   "breadcrumbs.enabled": true,
-  "chat.commandCenter.enabled": false,
   "debug.onTaskErrors": "showErrors",
   "dotnet.automaticallyCreateSolutionInWorkspace": false,
   "editor.codeLens": false,
@@ -14,7 +13,7 @@
   "editor.minimap.renderCharacters": false,
   "editor.minimap.showSlider": "always",
   "editor.renderControlCharacters": true,
-  "editor.renderWhitespace": "all",
+  "editor.renderWhitespace": "none",
   "editor.smoothScrolling": true,
   "editor.trimAutoWhitespace": true,
   "explorer.confirmDelete": false,
@@ -34,14 +33,12 @@
   },
   "security.workspace.trust.untrustedFiles": "open",
   "telemetry.telemetryLevel": "off",
-  "window.commandCenter": true,
   "window.restoreWindows": "none",
   "window.title": "${folderName}",
   "workbench.editor.scrollToSwitchTabs": true,
   "workbench.sideBar.location": "left",
   "workbench.startupEditor": "newUntitledFile",
   "git.openRepositoryInParentFolders": "never",
-  "window.menuBarVisibility": "toggle",
   "window.autoDetectHighContrast": false,
   "workbench.panel.showLabels": false,
   "workbench.colorTheme": "Catppuccin Frappé",
@@ -50,5 +47,23 @@
   "OpenplanetAngelscript.openplanetNextPluginsLocation": "/mnt/games/SteamLibrary/steamapps/common/Trackmania/Openplanet/Plugins/",
   "telemetry.editStats.enabled": false,
   "telemetry.feedback.enabled": false,
-  "chat.agent.enabled": false
+  "chat.agent.enabled": false,
+  "chat.disableAIFeatures": true,
+  "workbench.settings.showAISearchToggle": false,
+  "window.titleBarStyle": "native",
+  "window.menuStyle": "custom",
+  "update.mode": "none",
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.patterns": {
+    "*.gd": "${capture}.gd.uid, ${capture}.tscn",
+    "*": "${capture}.import"
+  },
+  "editor.guides.bracketPairs": "active",
+  "editor.language.colorizedBracketPairs": [
+
+  ],
+  "editor.guides.highlightActiveIndentation": "always",
+  "godotTools.inlayHints.gdscript": true,
+  "editor.autoIndentOnPaste": true,
+  "explorer.fileNesting.expand": false
 }

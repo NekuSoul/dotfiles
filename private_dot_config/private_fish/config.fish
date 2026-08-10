@@ -1,9 +1,10 @@
+source /usr/share/cachyos-fish-config/cachyos-config.fish
 
 if status is-interactive
 
     # Fancy startup
-    clear
-    fastfetch
+    #clear
+    #fastfetch
 
     # Set up GPG and SSH socket
     set -e SSH_AUTH_SOCK

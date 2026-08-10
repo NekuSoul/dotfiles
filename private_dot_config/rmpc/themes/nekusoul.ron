@@ -72,6 +72,7 @@
         panes: [
             (
                 size: "8",
+                border_title: [(kind: Text(" 󱖏 Now Playing "))],
                 borders: "ALL",
                 pane: Split(
                     direction: Horizontal,
@@ -93,7 +94,7 @@
                                     (
                                         size: "1",
                                         pane: Pane(ProgressBar),
-                                    )
+                                    ),
                                 ]
                             )
                         ),
@@ -106,12 +107,31 @@
                 ),
             ),
             (
-                size: "3",
-                pane: Pane(Tabs),
-            ),
-            (
                 size: "100%",
-                pane: Pane(TabContent),
+                pane: Split(
+                    direction: Horizontal,
+                    panes: [
+                        (
+                            size: "100%",
+                            border_title: [(kind: Text("  Library "))],
+                            borders: "ALL",
+                            pane: Split(
+                                direction: Vertical,
+                                panes: [
+                                    (
+                                        size: "2",
+                                        borders: "BOTTOM",
+                                        pane: Pane(Tabs),
+                                    ),
+                                    (
+                                        size: "100%",
+                                        pane: Pane(TabContent),
+                                    ),
+                                ]
+                            ),
+                        ),
+                    ]
+                ),
             ),
         ],
     ),

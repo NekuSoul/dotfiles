@@ -1,0 +1,43 @@
+#!/bin/bash
+
+# Set profiles path based on OS
+{{ if eq .chezmoi.os "darwin" -}}
+PROFILES_PATH="$HOME/Library/Application Support/Firefox"
+{{ else -}}
+PROFILES_PATH="$HOME/.mozilla/firefox"
+{{ end -}}
+PROFILES_INI="$PROFILES_PATH/profiles.ini"
+
+if [ ! -d "$PROFILES_PATH" ]; then
+  echo "Firefox profiles path not found at $PROFILES_PATH; skipping."
+  exit 0
+fi
+
+# First try: get Default= from the [Install...] section (most reliable)
+DEFAULT_PROFILE=$(grep -A1 "^\[Install" "$PROFILES_INI" | grep "Default=" | head -1 | cut -d= -f2)
+
+# Fallback: use the Path= from [Profile0]
+if [ -z "$DEFAULT_PROFILE" ]; then
+  DEFAULT_PROFILE=$(awk '/^\[Profile0\]/{found=1} found && /^Path=/{print substr($0,6); exit}' "$PROFILES_INI")
+fi
+
+# Check if path is relative or absolute
+IS_RELATIVE=$(awk '/^\[Profile0\]/{found=1} found && /^IsRelative=/{print substr($0,12); exit}' "$PROFILES_INI")
+
+if [ "$IS_RELATIVE" = "1" ]; then
+  FIREFOX_PROFILE="$PROFILES_PATH/$DEFAULT_PROFILE"
+else
+  FIREFOX_PROFILE="$DEFAULT_PROFILE"
+fi
+
+echo "Using Firefox profile: $FIREFOX_PROFILE"
+
+# Create the chrome directory and symlink userChrome.css
+mkdir -p "$FIREFOX_PROFILE/chrome"
+
+# Remove any existing file/symlink
+rm -f "$FIREFOX_PROFILE/chrome/userChrome.css"
+
+# Symlink from the chezmoi-managed location
+ln -sf "$HOME/.firefoxUserChrome.css" "$FIREFOX_PROFILE/chrome/userChrome.css"
+echo "Linked ~/.firefoxUserChrome.css → $FIREFOX_PROFILE/chrome/userChrome.css"

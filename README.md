@@ -8,6 +8,7 @@ This repository contains a bunch of my dotfiles, managed by `chezmoi`.
 * **btop**: resource monitor
 * **chezmoi**: dotfile manager
 * **fish**: commandline shell
+* **firefox**: web browser
 * **git**: version control
 * **keepassxc**: password manager
 * **kitty**: terminal emulator
